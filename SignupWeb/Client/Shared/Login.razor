@@ -1,0 +1,170 @@
+﻿@page "/"
+
+<style>
+    html {
+        height: 100%;
+    }
+    body {
+        width: 100%;
+        height: 100%;
+        /* background: red;*/
+        background: #648880; /* Old browsers */
+        background: -moz-linear-gradient(top, #648880 0%, #293f50 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(top, #648880 0%,#293f50 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom, #648880 0%,#293f50 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#648880', endColorstr='#293f50',GradientType=0 );
+        margin: auto;
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+    }
+</style>
+
+<PageTitle>Sign Up</PageTitle>
+
+@using System.ComponentModel.DataAnnotations
+@using System.Text;
+
+@inherits OwningComponentBase
+@inject ISnackbar Snackbar
+@inject HttpClient _httpClient
+
+<MudStack Justify="Justify.Center" AlignItems="AlignItems.Center" Style="position: fixed; top: 50%; left: 50%; margin-left: -190px; margin-top: -300px; border-radius: 30px;">
+    <MudCard Outlined Class="pa-4" Style="height: 600px; width: 380px;
+                                    box-shadow: 1px 1px 24px 3px black;
+                                    -webkit-box-shadow: 1px 1px 24px 3px black;
+                                    -moz-box-shadow: 1px 1px 24px 3px black;">
+        <MudCardContent>
+            <MudFocusTrap DefaultFocus=DefaultFocus.FirstChild style="align-items: center; justify-content: center;">
+                <h1 style="text-align: center">Join Us</h1>
+
+                <div class="px-6 rounded-xl" style="background-color: #F1F1F1; margin-top: 15px; margin-left: -10px; margin-right: -10px;">
+                    <MudTextField Style="height: 15px; margin-bottom: 5px" T="string" DisableUnderLine Margin="Margin.Dense" AutoFocus Variant="Variant.Text" Placeholder="Name" @bind-Value=Name For="@(() => Name)" />
+                </div>
+                <div class="px-6 rounded-xl" style="background-color: #F1F1F1; margin-top: 15px; margin-left: -10px; margin-right: -10px">
+                    <MudTextField Style="height: 15px; margin-bottom: 5px" T="string" DisableUnderLine Margin="Margin.Dense" Variant="Variant.Text" Placeholder="Password" @bind-Value=Password InputType="InputType.Password" For="@(() => Password)" />
+                </div>
+                <div class="px-6 rounded-xl" style="background-color: #F1F1F1; margin-top: 15px; margin-left: -10px; margin-right: -10px">
+                    <MudTextField Style="height: 15px; margin-bottom: 5px" T="string" DisableUnderLine Margin="Margin.Dense" Variant="Variant.Text" Placeholder="Address" @bind-Value=Address For="@(() => Address)" />
+                </div>
+                <div class="px-6 rounded-xl" style="background-color: #F1F1F1; margin-top: 15px; margin-left: -10px; margin-right: -10px">
+                    <MudTextField Style="height: 15px; margin-bottom: 5px" T="string" DisableUnderLine Margin="Margin.Dense" Variant="Variant.Text" Placeholder="PostCode" @bind-Value=PostCode For="@(() => PostCode)" />
+                </div>
+                <div class="px-6 rounded-xl" style="background-color: #F1F1F1; margin-top: 15px; margin-left: -10px; margin-right: -10px">
+                    <MudTextField Style="height: 15px; margin-bottom: 5px" T="string" DisableUnderLine Margin="Margin.Dense" Variant="Variant.Text" Placeholder="Phone" @bind-Value=Phone For="@(() => Phone)" />
+                </div>
+                <div class="px-6 rounded-xl" style="background-color: #F1F1F1; margin-top: 15px; margin-left: -10px; margin-right: -10px">
+                    <MudTextField Style="height: 15px; margin-bottom: 5px" T="string" DisableUnderLine Margin="Margin.Dense" Variant="Variant.Text" Placeholder="Mobile" @bind-Value=Mobile For="@(() => Mobile)" />
+                </div>
+                <div class="px-6 rounded-xl" style="background-color: #F1F1F1; margin-top: 15px; margin-left: -10px; margin-right: -10px">
+                    <MudTextField Style="height: 15px; margin-bottom: 5px" T="string" DisableUnderLine Margin="Margin.Dense" Variant="Variant.Text" Placeholder="Email" @bind-Value=Email For="@(() => Email)" />
+                </div>
+                <div class="px-6 rounded-xl" style="background-color: #F1F1F1; margin-top: 15px; margin-left: -10px; margin-right: -10px">
+                    <MudDatePicker Style="height: 15px; margin-bottom: 5px" Editable="true" DisableUnderLine Margin="Margin.Dense" Variant="Variant.Text" Placeholder="DOB" @bind-Date="@DOB" For="@(() => DOB)" />
+                </div>
+            </MudFocusTrap>
+        </MudCardContent>
+        <MudCardActions>
+            <MudButton Disabled="@_processing" ButtonType="ButtonType.Submit" Variant="Variant.Filled" OnClick=@DoLogin Color="Color.Info" Class="ml-auto py-3 px-6 rounded-xl" Style="margin-top: 15px">
+                @if (_processing)
+                {
+                    <MudProgressCircular Class="ms-n1" Size="Size.Small" Indeterminate="true" />
+                }
+                else
+                {
+                    <MudText>SIGN UP</MudText>
+                }
+            </MudButton>
+        </MudCardActions>
+    </MudCard>
+</MudStack>
+
+
+@code {
+    public string? Name { get; set; }
+    public string? Address { get; set; }
+    public string? PostCode { get; set; }
+    public string? Phone { get; set; }
+    public string? Mobile { get; set; }
+    public string? Email { get; set; }
+    public DateTime? DOB { get; set; }    
+    public string? Password { get; set; }
+    private bool _processing = false;
+
+    private async Task DoLogin()
+    {
+        SignUpForm model = new SignUpForm()
+        {
+            Name = Name,
+            Address = Address,
+            PostCode = PostCode,
+            Phone = Phone,
+            Mobile = Mobile,
+            Email = Email,
+            DOB = DOB,
+            Password = Password,
+        };
+
+        var errors = new List<ValidationResult>();
+        if (Validator.TryValidateObject(model, new ValidationContext(model), errors, validateAllProperties: true) == false)
+        {
+            foreach (var err in errors)
+            {
+                Snackbar.Add(err.ErrorMessage, Severity.Error);
+            }
+        }
+        else
+        {
+            _processing = true;
+            var res = await _httpClient.PostAsJsonAsync<SignUpForm>("User/Signup", model);
+            if (res.IsSuccessStatusCode)
+            {
+                Snackbar.Add("Successfull", Severity.Success);
+            }
+            else
+            {
+                string error = await res.Content.ReadAsStringAsync();
+                Snackbar.Add(error, Severity.Error);
+            }
+            await InvokeAsync(StateHasChanged);
+            _processing = false;
+        }
+    }
+
+    class SignUpForm
+    {
+        public int? ID { get; set; }
+
+        public int? CardNumber { get; set; }
+
+        [MaxLength(30)]
+        [Required]
+        public string? Name { get; set; }
+
+        [MaxLength(50)]
+        public string? Address { get; set; }
+
+        [MaxLength(10)]
+        public string? PostCode { get; set; }
+
+        [MaxLength(12)]
+        [Phone]
+        public string? Phone { get; set; }
+
+        [MaxLength(12)]
+        [Phone]
+        public string? Mobile { get; set; }
+
+        [MaxLength(50)]
+        [EmailAddress]
+        public string? Email { get; set; }
+
+        public DateTime? DOB { get; set; }
+
+        [MaxLength(10)]
+        [Required]
+        public string? Password { get; set; }
+    }
+}

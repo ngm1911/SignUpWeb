@@ -1,0 +1,45 @@
+﻿@using SignupWeb.Client.Shared;
+
+<PageTitle>Sign up</PageTitle>
+
+<Router AppAssembly="@typeof(App).Assembly">
+    <Found Context="routeData">
+        <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
+        <FocusOnNavigate RouteData="@routeData" Selector="h1" />
+    </Found>
+    <NotFound>
+        <PageTitle>Not found</PageTitle>
+        <LayoutView Layout="@typeof(MainLayout)">
+            <p role="alert">Sorry, there's nothing at this address.</p>
+        </LayoutView>
+    </NotFound>
+</Router>
+
+<style>
+    :root {
+        --mud-palette-primary: var(--mud-palette-info);
+    }
+
+    .mud-data-grid
+    {
+        border-color: transparent;
+        border-radius: 15px;
+    }
+
+    .mud-table-container {
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+    }
+    .mud-data-grid .mud-table-cell .column-header {
+        color: var(--mud-palette-info-text);
+    }
+
+    .mud-table-head .mud-table-row {
+        background-color: var(--mud-palette-info);
+    }
+
+    .mud-paper {
+        border-radius: 15px;
+    }
+
+</style>
