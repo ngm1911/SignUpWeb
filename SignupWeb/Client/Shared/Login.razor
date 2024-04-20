@@ -31,8 +31,8 @@
 @inject ISnackbar Snackbar
 @inject HttpClient _httpClient
 
-<MudStack Justify="Justify.Center" AlignItems="AlignItems.Center" Style="position: fixed; top: 50%; left: 50%; margin-left: -190px; margin-top: -300px; border-radius: 30px;">
-    <MudCard Outlined Class="pa-4" Style="height: 600px; width: 380px;
+<MudStack Justify="Justify.Center" AlignItems="AlignItems.Center" Style="position: fixed; top: 50%; left: 50%; margin-left: -190px; margin-top: -320px; border-radius: 30px;">
+    <MudCard Outlined Class="pa-4" Style="height: 640px; width: 380px;
                                     box-shadow: 1px 1px 24px 3px black;
                                     -webkit-box-shadow: 1px 1px 24px 3px black;
                                     -moz-box-shadow: 1px 1px 24px 3px black;">
@@ -41,28 +41,28 @@
                 <h1 style="text-align: center">Join Us</h1>
 
                 <div class="px-6 rounded-xl" style="background-color: #F1F1F1; margin-top: 15px; margin-left: -10px; margin-right: -10px;">
-                    <MudTextField Style="height: 15px; margin-bottom: 5px" T="string" DisableUnderLine Margin="Margin.Dense" AutoFocus Variant="Variant.Text" Placeholder="Name" @bind-Value=Name For="@(() => Name)" />
+                    <MudTextField Style="height: 15px; margin-bottom: 10px" T="string" DisableUnderLine Margin="Margin.Dense" AutoFocus Variant="Variant.Text" Placeholder="Name" @bind-Value=Name For="@(() => Name)" />
                 </div>
                 <div class="px-6 rounded-xl" style="background-color: #F1F1F1; margin-top: 15px; margin-left: -10px; margin-right: -10px">
-                    <MudTextField Style="height: 15px; margin-bottom: 5px" T="string" DisableUnderLine Margin="Margin.Dense" Variant="Variant.Text" Placeholder="Password" @bind-Value=Password InputType="InputType.Password" For="@(() => Password)" />
+                    <MudTextField Style="height: 15px; margin-bottom: 10px" T="string" DisableUnderLine Margin="Margin.Dense" Variant="Variant.Text" Placeholder="Password" @bind-Value=Password InputType="InputType.Password" For="@(() => Password)" />
                 </div>
                 <div class="px-6 rounded-xl" style="background-color: #F1F1F1; margin-top: 15px; margin-left: -10px; margin-right: -10px">
-                    <MudTextField Style="height: 15px; margin-bottom: 5px" T="string" DisableUnderLine Margin="Margin.Dense" Variant="Variant.Text" Placeholder="Address" @bind-Value=Address For="@(() => Address)" />
+                    <MudTextField Style="height: 15px; margin-bottom: 10px" T="string" DisableUnderLine Margin="Margin.Dense" Variant="Variant.Text" Placeholder="Address" @bind-Value=Address For="@(() => Address)" />
                 </div>
                 <div class="px-6 rounded-xl" style="background-color: #F1F1F1; margin-top: 15px; margin-left: -10px; margin-right: -10px">
-                    <MudTextField Style="height: 15px; margin-bottom: 5px" T="string" DisableUnderLine Margin="Margin.Dense" Variant="Variant.Text" Placeholder="PostCode" @bind-Value=PostCode For="@(() => PostCode)" />
+                    <MudTextField Style="height: 15px; margin-bottom: 10px" T="string" DisableUnderLine Margin="Margin.Dense" Variant="Variant.Text" Placeholder="PostCode" @bind-Value=PostCode For="@(() => PostCode)" />
                 </div>
                 <div class="px-6 rounded-xl" style="background-color: #F1F1F1; margin-top: 15px; margin-left: -10px; margin-right: -10px">
-                    <MudTextField Style="height: 15px; margin-bottom: 5px" T="string" DisableUnderLine Margin="Margin.Dense" Variant="Variant.Text" Placeholder="Phone" @bind-Value=Phone For="@(() => Phone)" />
+                    <MudTextField Style="height: 15px; margin-bottom: 10px" T="string" DisableUnderLine Margin="Margin.Dense" Variant="Variant.Text" Placeholder="Phone" @bind-Value=Phone For="@(() => Phone)" />
                 </div>
                 <div class="px-6 rounded-xl" style="background-color: #F1F1F1; margin-top: 15px; margin-left: -10px; margin-right: -10px">
-                    <MudTextField Style="height: 15px; margin-bottom: 5px" T="string" DisableUnderLine Margin="Margin.Dense" Variant="Variant.Text" Placeholder="Mobile" @bind-Value=Mobile For="@(() => Mobile)" />
+                    <MudTextField Style="height: 15px; margin-bottom: 10px" T="string" DisableUnderLine Margin="Margin.Dense" Variant="Variant.Text" Placeholder="Mobile" @bind-Value=Mobile For="@(() => Mobile)" />
                 </div>
                 <div class="px-6 rounded-xl" style="background-color: #F1F1F1; margin-top: 15px; margin-left: -10px; margin-right: -10px">
-                    <MudTextField Style="height: 15px; margin-bottom: 5px" T="string" DisableUnderLine Margin="Margin.Dense" Variant="Variant.Text" Placeholder="Email" @bind-Value=Email For="@(() => Email)" />
+                    <MudTextField Style="height: 15px; margin-bottom: 10px" T="string" DisableUnderLine Margin="Margin.Dense" Variant="Variant.Text" Placeholder="Email" @bind-Value=Email For="@(() => Email)" />
                 </div>
                 <div class="px-6 rounded-xl" style="background-color: #F1F1F1; margin-top: 15px; margin-left: -10px; margin-right: -10px">
-                    <MudDatePicker Style="height: 15px; margin-bottom: 5px" Editable="true" DisableUnderLine Margin="Margin.Dense" Variant="Variant.Text" Placeholder="DOB" @bind-Date="@DOB" For="@(() => DOB)" />
+                    <MudDatePicker IconSize="Size.Small" Style="height: 15px; margin-bottom: 10px" Editable="true" DisableUnderLine Margin="Margin.Dense" Variant="Variant.Text" Placeholder="DOB" @bind-Date="@DOB" For="@(() => DOB)" />
                 </div>
             </MudFocusTrap>
         </MudCardContent>
