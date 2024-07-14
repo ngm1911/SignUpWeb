@@ -27,24 +27,25 @@ namespace SignupWeb.Server.Controllers
             try
             {
                 var count = (await db.Customers.MaxAsync(x => x.ID, cancellationToken: cancel) ?? 0) + 1;
-                //await db.Customers.AddAsync(new Customer()
-                //{
-                //    CardNumber = count,
-                //    Address = cusInf.Address,
-                //    DOB = cusInf.DOB,
-                //    Email = cusInf.Email,
-                //    Mobile = cusInf.Mobile,
-                //    Name = cusInf.Name,
-                //    Phone = cusInf.Phone,
-                //    Password = cusInf.Password,
-                //    PostCode = cusInf.PostCode,
-                //}, cancel);
-                //await db.SaveChangesAsync(cancel);
+                await db.Customers.AddAsync(new Customer()
+                {
+                    ID = count,
+                    //CardNumber = count,
+                    Address = cusInf.Address,
+                    DOB = cusInf.DOB,
+                    Email = cusInf.Email,
+                    Mobile = cusInf.Mobile,
+                    Name = cusInf.Name,
+                    Phone = cusInf.Phone,
+                    //Password = cusInf.Password,
+                    PostCode = cusInf.PostCode,
+                }, cancel);
+                await db.SaveChangesAsync(cancel);
                 return Results.Ok();
             }
             catch (Exception ex)
             {
-                return Results.Problem();
+                return Results.BadRequest(ex.Message);
             }
         }
     }

@@ -22,6 +22,8 @@ namespace SignupWeb.Server.DatabaseContext
                 ConnectTimeout = 60,
             };
             _connectionString = sConnB.ConnectionString;
+
+            
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -30,6 +32,8 @@ namespace SignupWeb.Server.DatabaseContext
             {
                 optionsBuilder.UseSqlServer(_connectionString);
             }
+
+            optionsBuilder.LogTo(Console.WriteLine);
         }
 
         public DbSet<Customer> Customers { get; set; } = null!;

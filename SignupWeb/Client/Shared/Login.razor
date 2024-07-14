@@ -31,8 +31,8 @@
 @inject ISnackbar Snackbar
 @inject HttpClient _httpClient
 
-<MudStack Justify="Justify.Center" AlignItems="AlignItems.Center" Style="position: fixed; top: 50%; left: 50%; margin-left: -190px; margin-top: -320px; border-radius: 30px;">
-    <MudCard Outlined Class="pa-4" Style="height: 640px; width: 380px;
+<MudStack Justify="Justify.Center" AlignItems="AlignItems.Center" Style="position: fixed; top: 50%; left: 50%; margin-left: -190px; margin-top: -300px; border-radius: 30px;">
+    <MudCard Outlined Class="pa-4" Style="height: 600px; width: 380px;
                                     box-shadow: 1px 1px 24px 3px black;
                                     -webkit-box-shadow: 1px 1px 24px 3px black;
                                     -moz-box-shadow: 1px 1px 24px 3px black;">
@@ -43,9 +43,9 @@
                 <div class="px-6 rounded-xl" style="background-color: #F1F1F1; margin-top: 15px; margin-left: -10px; margin-right: -10px;">
                     <MudTextField Style="height: 15px; margin-bottom: 10px" T="string" DisableUnderLine Margin="Margin.Dense" AutoFocus Variant="Variant.Text" Placeholder="Name" @bind-Value=Name For="@(() => Name)" />
                 </div>
-                <div class="px-6 rounded-xl" style="background-color: #F1F1F1; margin-top: 15px; margin-left: -10px; margin-right: -10px">
+                @*  <div class="px-6 rounded-xl" style="background-color: #F1F1F1; margin-top: 15px; margin-left: -10px; margin-right: -10px">
                     <MudTextField Style="height: 15px; margin-bottom: 10px" T="string" DisableUnderLine Margin="Margin.Dense" Variant="Variant.Text" Placeholder="Password" @bind-Value=Password InputType="InputType.Password" For="@(() => Password)" />
-                </div>
+                </div> *@
                 <div class="px-6 rounded-xl" style="background-color: #F1F1F1; margin-top: 15px; margin-left: -10px; margin-right: -10px">
                     <MudTextField Style="height: 15px; margin-bottom: 10px" T="string" DisableUnderLine Margin="Margin.Dense" Variant="Variant.Text" Placeholder="Address" @bind-Value=Address For="@(() => Address)" />
                 </div>
@@ -67,7 +67,7 @@
             </MudFocusTrap>
         </MudCardContent>
         <MudCardActions>
-            <MudButton Disabled="@_processing" ButtonType="ButtonType.Submit" Variant="Variant.Filled" OnClick=@DoLogin Color="Color.Info" Class="ml-auto py-3 px-6 rounded-xl" Style="margin-top: 15px">
+            <MudButton Disabled="@_processing" ButtonType="ButtonType.Submit" Variant="Variant.Filled" OnClick=@DoLogin Color="Color.Info" EndIcon="@Icons.Material.Filled.Create" Class="ml-auto py-3 px-6 rounded-xl" Style="margin-top: 15px">
                 @if (_processing)
                 {
                     <MudProgressCircular Class="ms-n1" Size="Size.Small" Indeterminate="true" />
@@ -104,7 +104,7 @@
             Mobile = Mobile,
             Email = Email,
             DOB = DOB,
-            Password = Password,
+            //Password = Password,
         };
 
         var errors = new List<ValidationResult>();
@@ -151,6 +151,7 @@
 
         [MaxLength(12)]
         [Phone]
+        [Required]
         public string? Phone { get; set; }
 
         [MaxLength(12)]
@@ -163,8 +164,8 @@
 
         public DateTime? DOB { get; set; }
 
-        [MaxLength(10)]
-        [Required]
-        public string? Password { get; set; }
+        // [MaxLength(10)]
+        // [Required]
+        // public string? Password { get; set; }
     }
 }

@@ -1,11 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
-
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
-
   <ItemGroup>
     <Compile Remove="DatabaseScript\**" />
     <Compile Remove="ExcelTemplate\**" />
@@ -16,36 +14,24 @@
     <None Remove="DatabaseScript\**" />
     <None Remove="ExcelTemplate\**" />
   </ItemGroup>
-
   <ItemGroup>
     <Compile Remove="Service\MockApi.cs" />
   </ItemGroup>
-
   <ItemGroup>
-    <PackageReference Include="EPPlus" Version="7.0.1" />
-    <PackageReference Include="GemBox.Spreadsheet" Version="49.0.1509" />
     <PackageReference Include="JWT" Version="10.1.1" />
     <PackageReference Include="MailKit" Version="4.2.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.25" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="6.0.20" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.25" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.25" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.25">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="MimeKit" Version="4.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.7" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\Client\SignupWeb.Client.csproj" />
   </ItemGroup>
-
   <ItemGroup>
     <Content Update="appsettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-
-
 </Project>

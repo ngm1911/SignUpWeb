@@ -9,7 +9,7 @@ namespace SignupWeb.Server.Models
         [Key]
         public long? ID { get; set; }
 
-        public long? CardNumber { get; set; }
+        //public long? CardNumber { get; set; }
 
         [MaxLength(30)]
         public string? Name { get; set; }
@@ -31,7 +31,7 @@ namespace SignupWeb.Server.Models
 
         public DateTime? DOB { get; set; }
 
-        [MaxLength(10)]
-        public string? Password { get; set; }
+        //[MaxLength(10)]
+        //public string? Password { get; set; }
     }
 }
