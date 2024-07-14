@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>D:\Source code\Freelancer\SignUpWeb\SignupWeb\Server\bin\Release\net6.0\publish\</_PublishTargetUrl>
-    <History>True|2024-07-14T08:54:20.0450576Z||;True|2024-07-14T10:52:38.8898672+07:00||;</History>
+    <History>True|2024-07-14T14:24:00.2504114Z||;True|2024-07-14T21:23:44.1148551+07:00||;True|2024-07-14T20:59:12.8213683+07:00||;True|2024-07-14T20:58:45.6613046+07:00||;True|2024-07-14T20:56:40.4791077+07:00||;True|2024-07-14T20:19:11.5978098+07:00||;True|2024-07-14T15:54:20.0450576+07:00||;True|2024-07-14T10:52:38.8898672+07:00||;</History>
     <LastFailureDetails />
   </PropertyGroup>
 </Project>
